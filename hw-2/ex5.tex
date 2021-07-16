@@ -1,0 +1,81 @@
+\begin{exercise}
+(Variedades de Hopf) Sea $G \subset \C^\star$ el subgrupo cíclico generado por algún punto $0 < |z| < 1$. Considere la acción multiplicativa de $G$ sobre el espacio vectorial agujereado $M = \C^n - \{ 0 \}$. El espacio de órbitas $X = M/G$ de esta acción se denomina una variedad de Hopf.
+
+\begin{enumerate}[label=\alph*)]
+    \item Muestre que la acción de $G$ sobre $M$ es libre y propiamente discontinua, y el cociente $X = M/G$ es difeomorfo a $S^1 \times S^{2n-1}$.
+    
+    \item Para $n = 1$, exhiba un isomorfismo $\varphi : \C/\Gamma \to X$, donde $\Gamma \subset \C$ es un retículo.
+    
+    \item Para $n > 1$, verifique que $X$ no admite estructuras simplécticas, mucho menos de Kähler, y por tanto $X$ no es una variedad proyectiva.
+    
+    \begin{hint}
+    Utilice la fórmula de Künneth para calcular $H_{dR}^2(X)$.
+    \end{hint}
+    
+    \item Muestre que toda variedad de Hopf admite una fibración por curvas elípticas.
+    
+    \begin{hint}
+    Extienda la fibración de Hopf: $S^1 \hookrightarrow S^{2n-1} \twoheadrightarrow \CP^{n-1}$.
+    \end{hint}
+    
+    \item Sea $G \subset (\C^\star)^n$ el subgrupo cíclico generado por un punto con coordenadas $0 < |z_i| < 1$. Considere la acción multiplicativa de $G$ sobre cada coordenada de $M$. Los espacios cociente $X = M/G$ de este tipo son una generalización de las variedades de Hopf. Muestre que, pese a los cambios en la construcción, $X$ sigue siendo difeomorfo a $S^1 \times S^{2n-1}$.
+\end{enumerate}
+\end{exercise}
+
+\begin{solution}
+\leavevmode
+\begin{enumerate}[label=\alph*)]
+    \item Recordemos que el espacio proyectivo $\CP^{n-1}$ se construye cocientando $M$ por la acción de $\C^\star$ vía la multiplicación en cada componente. Para estudiar la topología cociente, es conveniente factorizar el grupo actuante como $\C^\star = \R^+ \times S^1$. Existe un difeomorfismo $\R^+$-equivariante $\varphi : M \to \R^+ \times S^{2n-1}$, donde $\R^+$ actúa multiplicativamente sobre el primer factor y trivialmente sobre el segundo factor del producto cartesiano $\R^+ \times S^{2n-1}$.
+    
+    Si ejecutamos la factorización $\C^\star = \R^+ \times S^1$ con cuidado, entonces podemos conseguir que $G$ sea un subgrupo del factor $\R^+$. Con ello, la acción de $G$ sobre $\R^+ \times S^{2n-1}$ hereda las cualidades de la acción de $\R^+$, i.e., es multiplicativa en el primer factor y trivial en el segundo. Entonces,
+    $$\frac MG \cong \frac {\R^+ \times S^{2n-1}} G \cong \frac {\R^+} G \times S^{2n-1} \cong S^1 \times S^{2n-1}$$
+    
+    La acción de $G$ sobre $\R^+$ es libre y propiamente discontinua, pues $\R^+$ es un grupo Hausdorff y $G$ es un subgrupo discreto de $\R^+$. (Los detalles se darán en la solución del ejercicio 6.a.) Esto implica que la acción de $G$ sobre $M \cong \R^+ \times S^{2n-1}$ también es libre y propiamente discontinua.
+    
+    Ahora describiremos explícitamente la factorización cuidadosa de $\C^\star$ antes mencionada. Consideremos el recubrimiento universal $\exp : \C \to \C^\star$. Como homomorfismo de grupos, su núcleo es $K = 2\pi i\Z$ y está contenido en el eje imaginario, que denotaremos $M \subset \C$. Tomemos una recta $L \subset \C$ cuya imagen $\exp(L)$ pasa por el generador de $G$. Observemos que $L, M$ son oblicuas, porque $\exp(M)$ es el círculo unitario, que por hipótesis no contiene al generador de $G$. Entonces,
+    $$\C^\star \cong \frac \C K = \frac {L \times M} K = L \times \frac MK \cong \R^+ \times S^1$$
+    
+    Como comentario final, observemos que, si $b \in \R$, entonces $\exp(L)$ es el eje real positivo $\R^+$, mientras que, si $b \notin \R$, entonces $\exp(L)$ es una espiral logarítmica que emana del origen removido en $\C^\star$.
+    
+    \item Para $n = 1$, tenemos $M = \C^\star$. Componiendo la proyección canónica $\pi : \C^\star \to X$ con el recubrimiento universal $\exp : \C \to \C^\star$, obtenemos otro recubrimiento universal $\tilde \varphi : \C \to X$ cuyo núcleo es el retículo $\Gamma = G \oplus K$. Entonces $\tilde \varphi$ induce un isomorfismo $\varphi : \C/\Gamma \to X$.
+    
+    \item Puesto que $X = S^1 \times S^{2n-1}$ es un producto de espacios compactos, tenemos
+    $$H_{dR}^\bullet(X) = H_{dR}^\bullet(S^1) \otimes H_{dR}^\bullet(S^{2n-1})$$
+    
+    En particular, en dimensión $2$, tenemos
+    $$H_{dR}^2(X) = \bigoplus_{i+j=2} H_{dR}^i(S^0) \otimes H_{dR}^j(S^{2n-1})$$
+    
+    Supongamos que $n > 1$ y analicemos cada sumando por separado:
+    \begin{itemize}
+        \item Para $i = 0$, el factor $H_{dR}^2(S^{2n-1})$ es trivial, porque $j = 2$ no es la dimensión de $S^{2n-1}$.
+        
+        \item Para $i = 1$, el factor $H_{dR}^1(S^{2n-1})$ es trivial, porque $j = 1$ no es la dimensión de $S^{2n-1}$.
+        
+        \item Para $i = 2$, el factor $H_{dR}^2(S^1)$ es trivial, porque $i = 2$ excede la dimensión de $S^1$.
+    \end{itemize}
+    
+    Entonces $H_{dR}^2(X)$ es trivial. Saquemos conclusiones:
+    \begin{itemize}
+        \item Supongamos por el absurdo $\omega \in \Omega^2(X)$ es una forma simpléctica sobre $X$. Puesto que $H_{dR}^2(X)$ es trivial, $\omega$ es exacta. Esto implica que $\omega^n$ es exacta, i.e., existe $\alpha \in \Omega_{dR}^{2n-1}(X)$ tal que $\omega = d\alpha$. Entonces, por el teorema de Stokes,
+        $$\int_M \omega^n = \int_M d\alpha = \int_{\partial M} \alpha = 0$$
+        
+        Pero esto contradice el hecho de que $\omega$, por ser una forma simpléctica, es no degenerada. Por lo tanto, $X$ no admite ninguna estructura simpléctica.
+        
+        \item Supongamos por el absurdo que existe un encaje holomorfo $X \subset \CP^m$. Entonces el pullback de la forma de Fubini-Study induce una estructura de Kähler sobre $X$. Dicha estructura de Kähler contiene una estructura simpléctica como parte de su definición. Pero en el ítem anterior hemos demostrado que $X$ no admite estructuras simplécticas. Por lo tanto, $X$ no puede ser encajada de manera holomorfa en $\CP^m$ para ningún $m \in \N$.
+    \end{itemize}
+    
+    \item Puesto que $\C^\star$ es un grupo abeliano, $G$ es un subgrupo normal de $\C^\star$, así que el espacio proyectivo $\CP^{n-1}$ se puede construir a partir de $M$ en dos etapas, primero cocientando $M$ por la acción de $G$ y sólo entonces concientando $X$ por la acción del toro complejo $\C^\star/G \cong \C/\Gamma$. Entones las fibras de la proyeción canónica $\pi : X \to \CP^{n-1}$ son copias de $\C/\Gamma$ encajadas de manera holomorfa en $X$.
+    
+    \item El argumento es similar al caso original. Consideremos el recubrimiento universal $\exp : \C^n \to (\C^\star)^n$, cuyo núcleo $K = \ker \exp$ es un retículo en el $n$-plano real $M \subset \C^n$ generado por los ejes imaginarios en cada copia de $\C$. Tomemos una recta $L \subset \C^n$ tal que $L' = \exp(L)$ pasa por el generador de $G$. Por construcción, $L \cap M = 0$, así que $L \cap K = 0$. Entonces $L'$ es isomorfo a $\R^+$.
+    
+    Ahora consideremos la acción de $(\C^\star)^n$ sobre $M$ en la cual cada copia de $\C^\star$ actúa únicamente sobre la coordenada correspondiente de $M$. Restrinjamos el grupo actuante a $L'$. Cada $L'$-órbita interseca a la esfera unitaria $S^{2n-1} \subset M$ en un único punto. Entonces existe una única función bien definida $f : M \to L'$ con la propiedad de que $\Vert \lambda \cdot z \Vert = 1$ si y sólo si $\lambda = f(z)$.
+    
+    Sea $\lambda_k$ la $k$-ésima coordenada de $(\C^\star)^n$. Observemos que $r_k = |\lambda_k|$ es un parámetro regular para las $L'$-órbitas contenidas en el abierto $z_k \ne 0$ de $M$. Diferenciando $g(\lambda) = |\lambda \cdot z|^2$, tenemos
+    $$\der g {r_k} = 2r_k \, |z_k|^2 > 0$$
+    
+    Entonces las $L'$-órbitas son transversas a $S^{2n-1}$. Por el teorema de la función implícita\footnote{Descubrir este paso me tomó más tiempo del que me gustaría admitir.}, existe una vecindad de $z_0$ en la cual (una función con la propiedad que define a) $f$ es diferenciable. Como $z_0$ es arbitrario, $f$ es globalmente diferenciable.
+    
+    Finalmente, sea $\varphi : M \to L' \times S^{2n-1}$ el difeomorfismo $\varphi(z) = (f(z)^{-1}, f(z) \cdot z)$. Este difeomorfismo es $L'$-equivariante si consideramos que $L'$ actúa de manera multiplicativa sobre sí mismo y de manera trivial sobre $S^{2n-1}$. Puesto que $G$ es un subgrupo de $L'$, tenemos
+    $$\frac MG \cong \frac {L' \times S^{2n-1}} G \cong \frac {L'} G \times S^{2n-1} \cong S^1 \times S^{2n-1}$$
+\end{enumerate}
+\end{solution}

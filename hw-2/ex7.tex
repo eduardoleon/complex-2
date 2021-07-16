@@ -1,0 +1,20 @@
+\begin{exercise}
+Sea $\rho \in \C^\star$ una raíz quinta de la unidad. Considere la acción de $G = \langle \rho \rangle$ sobre $\CP^3$ por
+$$\rho \cdot [z_0 : z_1 : z_2 : z_3] = [z_0 : \rho z_1 : \rho^2 z_0 : \rho^3 z_3]$$
+Sea $Y \subset \CP^3$ el conjunto de ceros del polinomio $f = z_0^5 + z_1^5 + z_2^5 + z_3^5$. La superficie de Godeaux se define como el espacio de órbitas $Y/G$ de la acción de $G$ restricta a $Y$.
+
+\begin{enumerate}[label=\alph*)]
+    \item Describa los puntos fijos de la acción de $G$ sobre $\CP^3$.
+    \item Muestre que $Y$ es una superficie $G$-invariante y no contiene puntos fijos de la acción.
+\end{enumerate}
+\end{exercise}
+
+\begin{solution}
+\leavevmode
+\begin{enumerate}[label=\alph*)]
+    \item La acción de $G$ puede verse como un automorfismo lineal $\rho : \C^4 \to \C^4$ que rota cada eje coordenado por un ángulo diferente. La única manera una recta compleja $L \subset \C^4$ sea $G$-invariante es que $L$ sea uno de los ejes coordenados. Por lo tanto, los puntos fijos de la acción de $G$ son
+    $$[1:0:0:0], \qquad \qquad [0:1:0:0], \qquad \qquad [0:0:1:0], \qquad \qquad [0:0:0:1]$$
+    
+    \item La superficie $Y$ es $G$-invariante porque la rotación de cada $z_i$ por una raíz quinta de la unidad tiene efecto nulo sobre su quinta potencia $z_i^5$. Además, por simple inspección, $f$ no se anula en ninguno de los puntos arriba listados.
+\end{enumerate}
+\end{solution}

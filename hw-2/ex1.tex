@@ -1,0 +1,11 @@
+\begin{exercise}
+Muestre que $\C^n$ no tiene subvariedades compactas de dimensión positiva. (En particular, no existe un análogo complejo del teorema de encaje de Whitney.)
+\end{exercise}
+
+\begin{solution}
+Sea $X \subset \C^n$ una subvariedad compacta y conexa. Sea $z : \C^n \to \C$ una función coordenada. Por compacidad, $|z|$ se maximiza en algún punto de $X$. Tomemos una carta de $X$ centrada en dicho punto de referencia, con coordenadas en una bola $B \subset \C^d$, y denotemos por $f : B \to \C$ la representación de $z \mid X$ en esta carta.
+
+Tomemos una recta compleja $L \subset \C^d$ que pasa por el punto de referencia. Entonces $B_L = B \cap L$ es una bola unidimensional en $L \cong \C$ y la restricción $f_L = f \mid B_L$ es una función holomorfa de una variable cuyo módulo $|f_L|$ alcanza un valor máximo. Por el principio del módulo máximo, $f_L$ debe ser constante. Puesto que todas las rectas $L$ pasan por un punto común, $f$ es constante.
+
+Sea $Y \subset X$ la intersección de $X$ con el hiperplano $z = b$, donde $b \in \C$ es el valor constante de $f$. Por el argumento anterior, $Y$ es un subconjunto abierto de $X$. Por definición de topología relativa, $Y$ es también un subconjunto cerrado de $X$. Puesto que $X$ es conexo e $Y$ es no vacío, tenemos $Y = X$, es decir, $X$ está contenida en el hiperplano $z = b$. Repitiendo este argumento usando las demás $n-1$ coordenadas de $\C^n$, demostramos que $X$ es un punto.
+\end{solution}

@@ -1,0 +1,40 @@
+\begin{exercise}
+Sea $V$ un espacio vectorial complejo de dimensión $n \in \N$. Como una generalización del espacio proyectivo $\P(V)$, identificado de manera natural con el conjunto de rectas en $V$ que pasan por el origen, uno define el \textit{grassmanniano} $\Gr_k(V)$ como el espacio de $k$-planos en $V$ que pasan por el origen. Esto es,
+$$\Gr_k(V) = \{ W \subset V : \dim W = k \}$$
+En particular, $\Gr_1(V) = \P(V)$ y $\Gr_{n-1}{V} = \P(V^\star)$.
+
+Para mostrar que $\Gr_k(V)$ es una variedad compleja, se puede asumir que $V = \C^n$. Todo $W \in \Gr_k(V)$ es generado por las filas de una matriz $k \times n$ de rango $k$. Denote por $M_{k,n}$ el conjunto de tales matrices y observe que $M_{k,n}$ es un subconjunto abierto del espacio de todas las matrices $k \times n$. Este último es una variedad compleja canónicamente isomorfa a $\C^{k \times n}$. Esto induce una sobreyección natural $\pi : M_{k,n} \to \Gr_k(V)$, que es el cociente por la acción natural de $\GL(k, \C)$ sobre $M_{k,n}$.
+
+Fije un orden $\{ B_1, \dots, B_m \}$ para los menores $k \times k$ de una matriz $k \times n$ y defina $U_i$ como el subconjunto abierto de $\Gr_k(V)$ en el cual $\det B_i \ne 0$. Si $\pi(A) = \pi(A')$, entonces $\det(B_i) \ne 0$ si y sólo si $\det(B_i') \ne 0$, así que los abiertos $U_i$ están bien definidos. Puesto que $A$ es de rango total, se tiene $\det(B_i) \ne 0$ para algún $i$, así que $U_1, \dots, U_m$ forman una cobertura abierta de $\Gr_k(V)$. Tras permutar las columnas de $A \in \pi^{-1}(U_i)$, uno puede escribir $A$ como $A = (B_i, C_i)$, donde $C_i$ es una matriz de orden $k \times (n-k)$. Entonces la aplicación $\varphi_i : U_i \to \C^{k \times (n-k)}$ dada por $\varphi \circ \pi(A) = B_i^{-1} C_i$ está bien definida.
+
+\begin{enumerate}[label=\alph*)]
+    \item Verifique que $\{ (U_i, \varphi_i) \}$ es un atlas holomorfo sobre $\Gr_k(V)$.
+    \item Demuestre que todo $\sigma \in \GL(V)$ induce un biholomorfismo $\sigma : \Gr_k(V) \to \Gr_k(V)$.
+    \item Determine la dimensión de las variedades grassmannianas.
+\end{enumerate}
+\end{exercise}
+
+\begin{solution}
+\leavevmode
+\begin{enumerate}[label=\alph*)]
+    \item Ya sabemos que $U_1, \dots, U_m$ cubren $\Gr_k(V)$ y las cartas $\varphi_i : U \to \C^{k \times (n-k)}$ están bien definidas. Sólo nos falta demostrar que cada función de transición $\tau_{ij} = \varphi_j \circ \varphi_i^{-1}$ es holomorfa.
+    
+    Tomemos un punto $W \in U_i \cap U_j$, representado por $K_i = \varphi(W)$ en las coordenadas de $U_i$. Permutemos las columnas de $(I, K_i)$ para obtener una matriz de la forma $(B_j, C_j)$. Puesto que $W \in U_j$, la matriz $B_j$ es invertible, así que $(I, B_j^{-1} C_j)$ es un punto bien definido y está en la órbita de $(B_j, C_j)$. Entonces $K_j = B_j^{-1} C_j$ es la representación de $W$ en las coordenadas de $U_j$. Por construcción, las entradas de $K_j$ son funciones racionales de las entradas de $K_i$, así que $\tau_{ij}$ es holomorfa.
+    
+    \item Sea $\sigma : V \to V$ un isomorfismo lineal y sea $S \in \GL(n, \C)$ la matriz que representa a $\sigma$. El efecto de aplicar $\sigma$ a las filas de $A \in M_{k,n}$ es que $A$ se multiplica a la derecha por $S^t$. Puesto que $S$ es invertible, $\sigma(A) = AS^t$ es de rango total, así que $\sigma(A) \in M_{k,n}$. Por ende, $\sigma$ se interpreta de manera natural como una aplicación holomorfa $\sigma : M_{k,n} \to M_{k,n}$.
+    
+    Por otro lado, el efecto de la acción de $\GL(k, \C)$ es que cada $A \in M_{k,n}$ se multiplica a la izquierda por el elemento actuante $P \in \GL(k, \C)$. La multiplicación de matrices es asociativa, i.e., $PAS^t$ es una expresión bien definida, independientemente de si primero multiplicamos $PA$ o $AS^t$. Esto implica que $\sigma$ es $\GL(k, \C)$-equivariante, i.e., $\sigma$ se interpreta de manera natural como una aplicación continua bien definida $\tilde \sigma : \Gr_k(V) \to \Gr_k(V)$. Sólo falta demostrar que $\tilde \sigma$ es holomorfa.
+    
+    Consideremos representación local de $\tilde \sigma$ en un punto $W \in U_i$ cuya imagen es $\tilde \sigma(W) \in U_j$. Para hallar $K_j = \varphi_j \circ \tilde \sigma(W)$ a partir de $K_i = \varphi_i(W)$, utilizamos el siguiente procedimiento:
+    \begin{itemize}
+        \item Obtener el representante $A \in M_{k,n}$ cuya permutación de columnas es $(I, K_i)$.
+        \item Aplicar $\sigma$ a fin de obtener $\sigma(A) = AS^t$ como representante de $\tilde \sigma(W)$.
+        \item Permutar las columnas de $AS^t$ para obtener una matriz extendida $(B_j, C_j)$.
+        \item Calcular $K_j = B_j^{-1} C_j$.
+    \end{itemize}
+    
+    Evidentemente, $K_j$ es una función racional de $K_i$, así que $\tilde \sigma$ es una aplicación holomorfa. Finalmente, por supuesto, el automorfismo lineal inverso $\sigma^{-1} : V \to V$ induce la aplicación holomorfa inversa $\tilde \sigma^{-1} : \Gr_k(V) \to \Gr_k(V)$, así que $\tilde \sigma$ es un biholomorfismo.
+    
+    \item El enunciado nos da una cobertura de $\Gr_k(V)$ por abiertos biholomorfos a $\C^{k \times (n-k)}$. Por lo tanto, la dimensión compleja de $\Gr_k(V)$ no puede ser otra cosa que $k \times (n-k)$.
+\end{enumerate}
+\end{solution}

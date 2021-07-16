@@ -1,0 +1,55 @@
+\begin{solution}
+\leavevmode
+\begin{enumerate}[label=\alph*)]
+    \item Sea $U = \C^{n+1} - \{ 0 \}$ con coordenadas $z_k = x_k + iy_k$ para $k = 0, \dots, n$. Para enfatizar la acción de $\C^\star$ por reescalamientos ponderados, escribiremos $U[a]$, indicando los pesos $a = (a_1, \dots, a_n)$. Observemos que la aplicación identidad $\id : U[a] \to U[b]$ sólo es $\C^\star$-equivariante cuando $a = b$.
+    
+    Factoricemos $\C^\star = \R^+ \times S^1$ y restrinjamos nuestra atención a la acción del factor $\R^+$. Consideremos el homeomorfismo $\varphi : U[1] \to U[a]$ definido por
+    $$\varphi(\dots, x_k + iy_k, \dots) = (\dots, f_k(x_k) + if_k(y_k), \dots)$$
+    donde $f_k(x) = \sign(x) \cdot |x|^{a_n}$. Este homeomorfismo es $\R^+$-equivariante, pues
+    $$\lambda^{a_k} f_k(x) = f_k(\lambda x), \qquad \qquad \qquad \text{para todo } x \in \R, \lambda \in \R^+$$
+    
+    Por ende, ambas acciones de $\R^+$ tienen espacios de órbitas homeomorfos
+    $$\frac {U[1]} {\R^+} \cong \frac {U[a]} {\R^+} \cong S^{2n+1}$$
+    
+    El segundo factor de $\C^\star$, el círculo $S^1$, actúa sobre la esfera $S^{2n+1}$ vía rotaciones ponderadas
+    $$\lambda \cdot (z_0, \dots, z_n) = (\lambda^{a_0} z_0, \dots, \lambda^{a_n} z_n)$$
+    
+    El espacio de órbitas resultante es $\CP^n[a]$. Este espacio es compacto, porque es la imagen de $S^{2n+1}$ bajo la proyección canónica, y Hausdorff, porque la acción de $S^1$ es propia, ya que $S^1$ es compacto.
+    
+    \setcounter {enumi} 3
+    
+    \item Tomemos un punto arbitrario $[b_0 : \dots : b_n] \in \CP^n[a_0, \dots, a_n]$. Tras una permutación de coordenadas, podemos suponer que $b_i \ne 0$ para todo $i = 0, \dots, k$, mientras que $b_i = 0 $ para todo $i = k+1, \dots, n$. Nuestro objetivo es determinar bajo qué condiciones el punto dado es regular (i.e., tiene vecindades suaves) o posee una singularidad de tipo orbifold. Para ello, construiremos una carta en el abierto de $\CP^n[a_0, \dots, a_n]$ cuya preimagen bajo la proyección canónica es $(\C^\star)^{k+1} \times \C^{n-k}$.
+    
+    Sea $U = (\C^\star)^{k+1}$, equipado con la acción de $\C^\star$ por reescalamientos ponderados:
+    $$\lambda \cdot (z_0, \dots, z_k) = (\lambda^{a_0} z_0, \dots, \lambda^{a_k} z_k)$$
+    
+    Sea $V = \C^{n-k}$, equipado con la acción de $\C^\star$ por reescalamientos ponderados:
+    $$\mu \cdot (z_{k+1}, \dots, z_n) = (\mu^{a_{k+1}} z_{k+1}, \dots, \mu^{a_n} z_n)$$
+    
+    Sea $G \subset \C^\star$ el grupo de raíces $a$-ésimas de la unidad, donde $a = \gcd(a_0, \dots, a_k)$. Observemos que $G$ estabiliza a $U$, de modo que el verdadero grupo actuante sobre $U$ es $\C^\star / G$. Por otro lado, $G$ actúa de manera efectiva sobre $V$, así que nuestro siguiente paso será trivializar la acción de $G$.
+    
+    Sea $W = \C^n / G$, equipado con la acción trivial de $\C^\star$. Definamos $\varphi : U \times V \to U \times W$ por
+    $$\varphi(z_0, \dots, z_n) = (z_0, \dots, z_k, \mu^{a_{k+1}} z_{k+1}, \dots, \mu^{a_n} z_n)$$
+    donde la variable auxiliar $\mu \in \C^\star / G$ satisface $\mu^a z_0 = 1$. Por cálculo directo, tenemos
+    $$\lambda \circ \varphi(z_0, \dots, z_n) = \varphi \circ \lambda(z_0, \dots, z_n) = (\lambda^{a_0} z_0, \dots, \lambda^{a_k} z_k, \mu^{a_{k+1}} z_{k+1}, \dots, \mu^{a_n} z_n)$$
+    así que $\varphi$ es una aplicación $\C^\star$-equivariante.
+    
+    Ahora consideremos la aplicación inducida por $\varphi$ entre los espacios de órbitas
+    $$\tilde \varphi : \frac {U \times V} {\C^\star} \longrightarrow \frac {U \times W} {\C^\star}$$
+    
+    La acción de $\C^\star$ es localmente libre sobre $U$ y es trivial sobre $W$, así que
+    $$\frac {U \times W} {\C^\star} \cong (\C^\star)^k \times W$$
+    
+    Demostraremos que $\tilde \varphi$ es un isomorfismo. Por construcción, $\varphi$ es sobreyectiva, así que $\tilde \varphi$ también es sobreyectiva. Sin embargo, $\varphi$ no es necesariamente inyectiva. Para superar este obstáculo, observemos que toda órbita en $U \times V$ pasa por puntos de la forma $(1, z_1, \dots, z_n)$, que llamaremos representantes canónicos\footnote{Los representantes canónicos no son tan canónicos: toda órbita en $U \times V$ tiene $a_0$ de ellos, no sólo uno.}. Escribamos explícitamente
+    $$\varphi(1, z_1, \dots, z_n) = (1, z_1, \dots, z_k, \eta z_{k+1}, \dots, \eta z_n)$$
+    donde $\eta \in \C^\star / G$ es el elemento identidad. Por construcción, $a$ divide a $a_0$, así que las raíces $a$-ésimas de la unidad también son raíces $a_0$-ésimas de la unidad. Entonces, dos representantes canónicos que son enviados a la misma órbita en $U \times W$ difieren a lo más por una rotación ponderada por una raíz $a_0$-ésima de la unidad. Por ende, $\tilde \varphi$ es inyectiva.
+    
+    En conclusión, el punto $[b_0 : \dots : b_n]$ admite vecindades localmente isomorfas a abiertos de $\C^n$ si y sólo si $G$ actúa de manera trivial sobre $V$, si y sólo si $G$ es el grupo trivial, si y sólo si los pesos $a_i$ correspondientes a las coordenadas no nulas $b_i \ne 0$ tienen máximo común divisor igual a $1$.
+    
+    \setcounter {enumi} 1
+    
+    \item En base al análisis del ítem d), el punto $[1 : 0 : \dots : 0]$ admite una vecindad isomorfa a $\C^n$ si y sólo si el peso correspondiente a la coordenada $b_0$ es $a_0 = 1$. En particular, $\CP^n[a_0, \dots, a_n]$ es una variedad compleja suave si y sólo si todos los pesos son $a_0 = \dots = a_n = 1$.
+    
+    \item En base al análisis del ítem d), el punto $[1 : 0 : 1 : 0 : \dots : 0]$ admtie una vecindad isomorfa a un abierto de $\C^n$ si y sólo si los pesos $a_0, a_2$ correspondientes a las coordenadas $b_0, b_2$ satisfacen $\gcd(a_0, a_2) = 1$, lo cual no ocurre si dichos pesos no son primos relativos.
+\end{enumerate}
+\end{solution}

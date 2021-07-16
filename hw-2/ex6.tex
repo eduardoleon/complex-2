@@ -1,0 +1,62 @@
+\begin{exercise}
+(Variedad de Iwasawa) Dado un anillo (conmutativo, con unidad) $R$, el grupo de Heisenberg $H_3(R)$ está conformado por las matrices $3 \times 3$ de la forma 
+$$A(x,y,z) = \mat {1 & z_1 & z_2 \\ 0 & 1 & z_3 \\ 0 & 0 & 1}$$
+Considere la acción izquierda sobre $G = H_3(\C)$ del subgrupo $H = H_3(\Z[i])$.
+
+\begin{enumerate}[label=\alph*)]
+    \item Muestre la acción de $H$ sobre $G$ es propiamente discontinua y, por ende, el cociente $X = G/H$ es una variedad compleja de dimensión $3$.
+    
+    \item Considere el toro complejo $Y = \C / \Z[i]$. Muestre que $X$ es el espacio total de una fibración de $Y^2$ por curvas isomorfas a $Y$.
+\end{enumerate}
+\end{exercise}
+
+\begin{solution}
+\leavevmode
+\begin{enumerate}[label=\alph*)]
+    \item Incluso sin utilizar la estructura diferenciable, dados un grupo topológico Hausdorff $G$ y un subgrupo discreto $H \subset G$, es automático que $H$ es un subgrupo cerrado de $G$ y la acción izquierda de $H$ sobre $G$ es propiamente discontinua. En el ejercicio anterior, usamos este hecho sin demostración, para no sobrecargar aún más la respuesta dada. Ahora daremos la demostración detallada.
+    
+    Puesto que $H \subset G$ es discreto, podemos tomar una vecindad $U \subset G$ de la identidad que no contiene otros puntos de $H$. Por continuidad de la multiplicación, podemos tomar vecindades $U_1, U_2 \subset G$ de la identidad tales que $U_1 \cdot U_2 \subset U$. Entonces $V = U_1 \cap U_2 \cap U_1^{-1} \cap U_2^{-1}$ es una vecindad de la identidad que satisface tanto $V^{-1} = V$ como $V^2 \subset U$.
+    
+    Tomemos dos elementos $h_1, h_2 \in H$. Si existiese algún $g \in G$ tal que la traslación $gV$ pasa por ambos, entonces $h_1^{-1} h_2 \in U \cap H$, lo cual sólo es posible si $h_1 = h_2$. Así pues, toda traslación de $V$ visita a lo más un punto de $H$. Entonces podemos pensar en $H$ como la familia localmente finita de sus propios puntos. Puesto que $G$ es Hausdorff, sus puntos son cerrados y, por ende, $H$ es cerrado.
+    
+    Tomemos ahora un elemento $g \notin H$. Como $H$ es cerrado en $G$, podemos asumir que $U$ es disjunto de la clase lateral $Hg$. Dados $h \in H$, $v \in V$ arbitrarios, tenemos
+    $$hg \notin U \implies hg \notin V \implies hgv \notin V^2 \implies hgv \notin V$$
+    
+    Entonces $V$ es disjunto de $HgV$. En general, para separar dos clases laterales arbitrarias, aplicamos una traslación que mueva una de las clases a $H$. Un representante de la otra clase fungirá de $g$ en el procedimiento antes descrito.
+    
+    Finalmente, en nuestro caso particular, $G$ es un grupo de Lie complejo y $H$ es un subgrupo discreto de $G$. Por lo tanto, $X = G/H$ es una variedad compleja de la misma dimensión de $G$, que es $3$.
+    
+    \item Identifiquemos $R \subset H_3(R)$ con el subgrupo con coordenada $z_2$ e identifiquemos $R^2 \subset H_3(R)$ con el subgrupo con coordenadas $z_1, z_3$. Entonces $H_3(R)$ es algebraicamente un producto semidirecto de la forma $R \rtimes R^2$. En otras palabras, tenemos una sucesión exacta partida
+    $$
+    \begin{tikzcd}[row sep=large, column sep=large]
+    0 \r & R \r & H_3(R) \r & R^2 \r \arrow[bend right=30, dashed]{l} & 0
+    \end{tikzcd}
+    $$
+    
+    La construcción de este diagrama es funtorial con respecto al anillo $R$. Por ende, la inclusión de los enteros gaussianos $\Z[i]$ en los números complejos $\C$ induce el diagrama conmutativo
+    $$
+    \begin{tikzcd}
+         & 0        \d & 0    \d & 0          \d & \\
+    0 \r & \Z[i] \r \d & H \r \d & \Z[i]^2 \r \d & 0 \\
+    0 \r & \C    \r \d & G \r    & \C^2    \r \d & 0 \\
+         & Y        \d &         & Y^2        \d & \\
+         & 0           &         & 0
+    \end{tikzcd}
+    $$
+    
+    Todas las filas y todas las columnas son exactas. Sin embargo, la columna central no se extiende más allá de $G$, porque $H$ no es un subgrupo normal de $G$ y, por lo tanto, $X$ no es un grupo.
+    
+    Componiendo la proyección de $G$ sobre $\C^2$ (horizontal) con la proyección de $\C^2$ sobre $Y^2$ (vertical), obtenemos un homomorfismo sobreyectivo de grupos de Lie $\tilde \pi : G \to Y^2$ cuyo núcleo contiene a $H$, porque el camino $H \to G \to \C^2 \to Y^2$ es equivalente al camino $H \to \Z[i]^2 \to \C^2 \to Y^2$ y este último envía $\Z[i]$ a cero. Entonces existe una aplicación holomorfa sobreyectiva $\pi : X \to Y^2$ que completa el siguiente diagrama conmutativo:
+    $$
+    \begin{tikzcd}[row sep=large, column sep=large]
+    G \arrow[d] \arrow[rd, "\tilde \pi"] & \\
+    X \arrow[r, "\pi", dashed] & Y^2
+    \end{tikzcd}
+    $$
+    
+    Las fibras de $\pi$ son isomorfas al cociente $K/H$, donde $K = \ker \tilde \pi = \C \rtimes \Z[i]^2$ es el grupo de matrices de la forma $A(z_1, z_2, z_3)$, con entradas $z_2 \in \C$, $z_1, z_3 \in \Z[i]$. Como $N = \Z[i]$ es el factor normal de $H$ en el producto semidirecto $H = N \rtimes N^2$, tenemos
+    $$\frac KH \cong \frac {K/N} {H/N} \cong \frac {Y \times N^2} {N^2} \cong Y \times \frac {N^2} {N^2} \cong Y$$
+    
+    La acción de $N^2$ no afecta al factor $Y = \C/N$, que es la coordenada $z_2$ módulo una traslación.
+\end{enumerate}
+\end{solution}

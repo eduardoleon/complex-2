@@ -1,0 +1,23 @@
+\begin{exercise}
+(Teorema de la función implícita) Considere el espacio $\C^m$ con coordenadas $z = (z^1, \dots, z^m)$ y el espacio $\C^n$ con coordenadas $w = (w^1, \dots, w^n)$. Sea $f : U \to \C^n$ una aplicación holomorfa definida en un subconjunto abierto $U \subset \C^m \times \C^n$. Suponga que $(z_0, w_0) \in U$ es un punto en el cual
+$$\det \der fw \ne 0$$
+Demuestre que existen un abierto encajado $Z \times W \subset U$ y una aplicación holomorfa $g : Z \to W$ tales que $f(z, w) = f(z_0, w_0)$ si y sólo si $g(z) = w$.
+\end{exercise}
+
+\begin{solution}
+Asumiremos como cierta la versión real\footnote{Esto es hacer trampa, porque es en la versión real del teorema donde está toda la dificultad.} del teorema. Reinterpretemos $df : \C^m \times \C^n \to \C^n$ como una transformación $\R$-lineal $df_\R : \R^{2m} \times \R^{2n} \to \R^{2n}$. La manera obvia de hacer esto es reinterpretar cada entrada compleja $z = a + ib$ del jacobiano como la matriz
+$$\mat {a & -b \\ b & a}$$
+
+Tras complejificar los espacios vectoriales $\R^{2m} \otimes \C = \C^{2m}$ y $\R^{2n} \otimes \C = \C^{2n}$, podemos diagonalizar simultáneamente todas las matrices $2 \times 2$ arriba mencionadas. El resultado es
+$$\mat {z & 0 \\ 0 & \z}$$
+
+Reordenando las filas y columnas y denotando $f_z = \partial f / \partial z$, $f_w = \partial f / \partial w$ por claridad notacional (pero recordando que son matrices), las entradas del jacobiano real complejificado y diagonalizado son
+$$df_\R \otimes 1 = \mat {f_z & f_w} \otimes 1 = \mat {f_z & 0 & f_w & 0 \\ 0 & \overline {f_z} & 0 & \overline {f_w}}$$
+
+Entonces $df_\R \otimes 1$ es una matriz de rango total. Por ende, $df_\R$ es una matriz de rango total. Usando la versión real del teorema de la función implícita, existe una aplicación $g : Z \to W$ con todas las propiedades requeridas excepto una: $g$ es meramente de clase $C^\infty$, no necesariamente holomorofa.
+
+Puesto que $f$ es una función holomorfa, tenemos
+$$\der {} \z \mat { f(z, g(z)) } = \cancel {\der f \z (z, g(z))} + \der f w \cdot \der g \z + \cancel {\der f \w \cdot \der \g \z} = \der f w \cdot \der g \z = 0$$
+
+Pero, como $\partial f/\partial w$ es una matriz invertible, esto implica que $\partial g/\partial \z = 0$. Es decir, $g$ es holomorfa.
+\end{solution}

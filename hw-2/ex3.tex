@@ -1,0 +1,44 @@
+\begin{exercise}
+En el espacio proyectivo $\CP^n$, un polinomio homogéneo $F(z_0, \dots, z_n)$ no define una función, pues su valor en el punto $[a_0 : \dots : a_n]$ no siempre está bien definido. Sin embargo, el conjunto de ceros en $\CP^n$ de un polinomio homogéneo $F(z_0, \dots, z_n)$ sí está bien definido, ya que
+$$F(z_0, \dots, z_n) = 0 \iff F(tz_0, \dots, tz_n) = t^k F(z_0, \dots, z_n)$$
+para todo $t \in \C^\star$. El conjunto de ceros de una cantidad finita de polinomios homogéneos en $\CP^n$ se denomina una \textit{variedad proyectiva compleja}. Una variedad definida por un único polinomio homogéneo de grado $k$ se denomina una \textit{hipersuperficie de grado} $k$. Muestre que la hipersuperficie $Z(F)$ definida por $F(z_0, z_1, z_2) = 0$ es una variedad compleja suave (manifold) si las derivadas parciales $\partial F / \partial z_i$ no se anulan simultáneamente en ningún punto de $Z(F)$.
+\end{exercise}
+
+\begin{solution}
+Sea $p \in \C^3$ un punto distinto del origen. Supongamos que el polinomio homogéneo $F(z_0, z_1, z_2)$ se anula en $p$, pero alguna de las derivadas parciales $\partial F / \partial z_i$ no se anula en $p$. Sea $U \subset \CP^2$ una vecindad afín del punto $[p] \in \CP^2$ y sea $H$ la parte de $Z(F)$ contenida en $U$. Finalmente, sean $\tilde U, \tilde H$ las preimágenes de $U, H$ bajo la proyección canónica $\pi : \C^3 \setminus \{ 0 \} \to \CP^2$.
+
+Utilizando esta información, construiremos un diagrama conmutativo de la forma
+$$
+\begin{tikzcd}
+         & 0               \d & 0               \d & 0         \d \\
+    0 \r & T_1 \C^\star \r \d & T_1 \C^\star \r \d & 0      \r \d & 0 \\
+    0 \r & T_p \tilde H \r \d & T_p \tilde U \r \d & T_0 \C \r \d & 0 \\
+    0 \r & T_{[p]}    H \r \d & T_{[p]}    U \r \d & T_0 \C \r \d & 0 \\
+         & 0                  & 0                  & 0
+\end{tikzcd}
+$$
+cuyas filas y columnas son todas exactas:
+\begin{itemize}
+    \item El cuadrado superior izquierdo conmuta porque la incrustación $\tilde \iota : \tilde H \to \tilde U$ es $\C^\star$-equivariante, así que respeta los campos tangentes a las órbitas generados por la acción del álgebra de Lie $T_1 \C^\star$.
+    
+    \item El cuadrado superior derecho conmuta porque $\ker \pi_p = T_1 \C^\star$ está incluido en $\ker dF_p = T_p \tilde H$. Esto último se debe a que $F$ es constante sobre la órbita $[p]$.
+    
+    \item El cuadrado inferior izquierdo conmuta porque $\tilde \iota$ induce una incrustación $\iota : H \to U$.
+    
+    \item El cuadrado inferior derecho conmuta por una razón un tanto elaborada. Recordemos que existe un biholomorfismo $\C^\star$-equivariante entre $\tilde U$ y el producto cartesiano $\C^\star \times U$, donde $\C^\star$ actúa de manera trivial sobre el segundo factor $U$. Este biholomorfismo induce una manera canónica de expresar todo vector tangente en $T_p \tilde U$ como suma de un vector tangente en $T_{[p]} U$ y un vector tangente a la órbita, ahora identificada con el factor $\C^\star$. Pero $F$ es constante sobre la órbita, así que $dF_p$ se anula sobre la parte tangente a ella, así que $dF_p$ está determinado por cómo actúa sobre $T_{[p]} U$.
+    
+    \item Las dos primeras columnas son exactas porque la proyección canónica $\pi : \tilde U \to U$ es una sumersión cuyas fibras son precisamente las órbitas de la acción de $\C^\star$.
+    
+    \item La tercera columna es exacta porque, si utilizamos la representación local de $\tilde U$ que lo identifica con $\C^\star \times U$, entonces la representación local de $\id : T_0 \C \to T_0 \C$ es el morfismo identidad.
+    
+    \item La primera fila es exacta porque $\id : T_1\C^\star \to T_1\C^\star$ es el morfismo identidad.
+    
+    \item La segunda fila es exacta porque el diferencial $dF_p : T_p\tilde U_0 
+    \to T_0\C$ es sobreyectivo (por hipótesis, todo $p \in \tilde H$ es un punto regular de $F$) y su núcleo es, por definición, $T_pH = \ker dF_p$.
+    
+    \item Entonces, por el lema de los nueve, la tercera fila es exacta. Pero esto implica que $Z = Z(F)$ tiene un espacio tangente unidimensional bien definido en $[p]$, ya que
+    $$\dim_\C T_{[p]} Z = \dim_\C T_{[p]} H = \dim_\C T_{[p]} U - \dim_\C T_0 \C = 2 - 1 = 1$$
+    
+    Entonces $p$ no es un punto singular de $Z(F)$. Generalizando, si las derivadas parciales $\partial F / \partial z_i$ no se anulan simultáneamente para ningún punto $[p] \in Z$, entonces $Z$ es una variedad compleja suave.
+\end{itemize}
+\end{solution}
